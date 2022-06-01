@@ -1,6 +1,10 @@
 # Creds and Configs
 sleeper_project.json
 
+
+# App Files
+Files/players.csv
+
 *.DS_Store
 # Byte-compiled / optimized / DLL files
 __pycache__/
