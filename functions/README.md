@@ -49,3 +49,10 @@ These functions work primarily in the [Sleeper.app API](https://docs.sleeper.app
 #### update_players(path='Files/palyers.csv', manual=False, status='all'):
 
 The Players API from Sleeper is heavy, so out of respect this function attempts to update data at most once per day. It checks the last-modified time of `Files/players.csv` and runs the function only if the file has not been updated `today`.
+
+
+### 3. Transaction Functions
+
+#### get_transactions()
+
+returns dataframe of transactions from input list of leagues
