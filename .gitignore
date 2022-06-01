@@ -1,3 +1,6 @@
+# Creds and Configs
+sleeper_project.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
