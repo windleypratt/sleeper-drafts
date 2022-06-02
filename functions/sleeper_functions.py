@@ -372,7 +372,17 @@ def update_draft_results(drafts='regular', scoring_types=['dynasty_ppr','dynasty
            'draft_slot', 'draft_id', 'years_exp', 'team',
            'status', 'position', 'number', 'injury_status',
            'league_size', 'run_time', 'full_name']
+
+
+                    if max(df.years_exp) == 0:
+                        draft_type = 'rookie'
+                    else:
+                        draft_type = 'other'
+
+                    df['draft_type'] = draft_type 
+
                     draft = draft.append(df, ignore_index=True)
+                    
                 else:
                     #print('Not enough real users')
                     #idCount = idCount - 1
