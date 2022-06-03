@@ -9,7 +9,7 @@ import numpy as np
 ## User League Spider
 
 start = datetime.now()
-seconds = 3000
+seconds = 600
 sample = 1200
 
 ul_spider(seconds, sample)
