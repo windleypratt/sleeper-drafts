@@ -5,11 +5,15 @@ from functions.logsheets import *
 import http.client, urllib.request, urllib.parse
 from datetime import datetime
 import numpy as np
+import sys
 
 ## User League Spider
 
 start = datetime.now()
-seconds = 600
-sample = 1200
+
+seconds = int(sys.argv[1])
+sample = int(sys.argv[2])
+#seconds = 600
+#sample = 1200
 
 ul_spider(seconds, sample)
