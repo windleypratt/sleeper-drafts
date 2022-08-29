@@ -51,6 +51,26 @@ def update_players(path = 'Files/players.csv', manual = False, status = 'all'):
     else:
         return df[df['status'] != 'Inactive'].reset_index(drop=True)
 
+def get_league(key = 'ons', league_id = None):
+    if league_id != None:
+        s = str(league_id)
+    else:
+        s = str(leagues.get(key))
+        
+    conn = http.client.HTTPSConnection('api.sleeper.app')
+
+    try:
+        conn.request("GET", '/v1/league/' + str(s) + '/users')
+        start_conn = conn.getresponse().read()
+        ls = json.loads(start_conn)
+
+        lineups = pd.DataFrame(ls)
+
+    except Exception as e:
+        raise(e)
+
+    return lineups
+
 
 def leagues_from_users(users = None, limit=None, sample=None, year=None, update=False):
     
