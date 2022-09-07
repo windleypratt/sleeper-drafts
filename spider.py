@@ -7,13 +7,26 @@ from datetime import datetime
 import numpy as np
 import sys
 
-## User League Spider
-
 start = datetime.now()
 
-seconds = int(sys.argv[1])
-sample = int(sys.argv[2])
+spider = sys.argv[1].lower()
+seconds = int(sys.argv[2])
+sample = int(sys.argv[3])
 #seconds = 600
 #sample = 1200
 
-ul_spider(seconds, sample)
+if spider == 'true':
+    print("-----SPIDER-----")
+    ul_spider(seconds, sample)
+
+print("-----DRAFT META-----")
+update_draft_meta(update=True)
+
+print("-----DRAFT RESULTS-----")
+update_draft_results(limit = 5000, update = True)
+
+print("-----PREP TABLEAU-----")
+prep_tableau(days_back = 45)
+
+end = datetime.now()
+print('Finished: ' + str(end-start))

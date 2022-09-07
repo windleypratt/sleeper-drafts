@@ -325,6 +325,9 @@ def update_draft_results(drafts='regular', scoring_types=['dynasty_ppr','dynasty
     
     ed = get_draft_results()
     used = ed.drop_duplicates(subset=['draft_id']).draft_id.to_list()
+    
+    bots = pd.read_csv('Files/bots.csv', dtype='object')
+    used.extend(bots.bots.drop_duplicates().to_list())
             
     if drafts == 'all':
         dm = get_draft_meta()
@@ -348,6 +351,8 @@ def update_draft_results(drafts='regular', scoring_types=['dynasty_ppr','dynasty
         draft_ids = draft_ls
     
     draft = pd.DataFrame()
+    bot_list = list()
+                       
     idCount = 0
     errs = 0
     start = datetime.now()
@@ -406,6 +411,7 @@ def update_draft_results(drafts='regular', scoring_types=['dynasty_ppr','dynasty
                 else:
                     #print('Not enough real users')
                     #idCount = idCount - 1
+                    bot_list.append(draft_id)
                     pass
 
             else:
@@ -420,7 +426,10 @@ def update_draft_results(drafts='regular', scoring_types=['dynasty_ppr','dynasty
             #print(e)
             pass
 
-    
+    bots = bots.append(pd.DataFrame(bot_list, columns=['bots']))
+    bots.to_csv('Files/bots.csv', index=False)     
+                    
+                       
     if update == True:
         a = len(used)
         all_drafts = ed.append(draft)
