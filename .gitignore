@@ -1,9 +1,10 @@
 # Creds and Configs
 sleeper_project.json
 
+config.yaml
 
 # App Files
-Files/players.csv
+*.csv
 
 *.DS_Store
 # Byte-compiled / optimized / DLL files
